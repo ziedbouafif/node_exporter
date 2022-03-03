@@ -44,11 +44,7 @@
         path: "{{ node_exporter_tls_server_config.key_file }}"
       register: __node_exporter_key_file
 
-    - name: Assert that TLS key and cert are present
-      assert:
-        that:
-          - "{{ __node_exporter_cert_file.stat.exists }}"
-          - "{{ __node_exporter_key_file.stat.exists }}"
+
   when: node_exporter_tls_server_config | length > 0
 
 - name: Check if node_exporter is installed
