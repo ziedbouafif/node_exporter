@@ -15,7 +15,7 @@ Due to limitations of galaxy.ansible.com we had to move the role to https://gala
 
 Deploy prometheus [node exporter](https://github.com/prometheus/node_exporter) using ansible.
 
-## Requirements
+#### Requirements
 
 - Ansible >= 2.7 (It might work on previous versions, but we cannot guarantee it)
 - gnu-tar on Mac deployer host (`brew install gnu-tar`)
