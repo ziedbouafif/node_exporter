@@ -14,7 +14,7 @@
         privatekey_path: /etc/node_exporter/tls.key
         provider: selfsigned
   roles:
-    - cloudalchemy.node_exporter
+    - install_node_exporter
   vars:
     node_exporter_tls_server_config:
       cert_file: /etc/node_exporter/tls.cert
