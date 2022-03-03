@@ -6,6 +6,7 @@
         state: directory
         owner: root
         group: root
+        become: true
 
     - name: Create cert and key
       openssl_certificate:
