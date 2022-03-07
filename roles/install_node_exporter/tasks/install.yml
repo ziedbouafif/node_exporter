@@ -1,19 +1,19 @@
 ---
-- name: Create the node_exporter group
-  group:
-    name: "{{ _node_exporter_system_group }}"
-    state: present
-    system: true
+#- name: Create the node_exporter group
+  #group:
+    #name: "{{ _node_exporter_system_group }}"
+    #state: present
+   # system: true
   #when: _node_exporter_system_group != "root"
 
-- name: Create the node_exporter user
-  user:
-    name: "{{ _node_exporter_system_user }}"
-    groups: "{{ _node_exporter_system_group }}"
-    append: true
-    shell: /usr/sbin/nologin
-    system: true
-    create_home: false
+#- name: Create the node_exporter user
+ # user:
+  #  name: "{{ _node_exporter_system_user }}"
+   # groups: "{{ _node_exporter_system_group }}"
+    #append: true
+    #shell: /usr/sbin/nologin
+    #system: true
+    #create_home: false
     #home: /
   #when: _node_exporter_system_user != "root"
 
