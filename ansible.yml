@@ -1,6 +1,6 @@
 
 - name: install node-exporter
-  hosts: server-deploy
+  hosts: host
   become: yes
   roles:
   - node-exporter
