@@ -1,10 +1,10 @@
-- hosts: all
-  
+- name: install monitoring stack
+  hosts: localhost
+  become: yes
   roles:
-    - install_node_exporter
-  vars:
-    node_exporter_tls_server_config:
-      cert_file: /etc/node_exporter/tls.cert
-      key_file: /etc/node_exporter/tls.key
-    node_exporter_basic_auth_users:
-      randomuser: examplepassword 
+  - prometheus
+- name: install node-exporter
+  hosts: all
+  become: yes
+  roles:
+  - node-exporter
