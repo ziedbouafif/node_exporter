@@ -1,6 +1,6 @@
 - hosts: server-deploy
   roles:
-    - install_node_exporter
+    - node-exporter
   vars:
     node_exporter_tls_server_config:
       cert_file: /etc/node_exporter/tls.cert
