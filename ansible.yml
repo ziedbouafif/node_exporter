@@ -1,8 +1,4 @@
-- name: install monitoring stack
-  hosts: localhost
-  become: yes
-  roles:
-  - prometheus
+
 - name: install node-exporter
   hosts: all
   become: yes
