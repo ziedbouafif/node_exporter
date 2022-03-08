@@ -1,13 +1,13 @@
 #jinja2: lstrip_blocks: "True"
 {{ prometheus_var_config | to_nice_yaml(indent=2) }}
 {% if prometheus_node_exporter_group %}
-#- job_name: node_exporter
-#  scrape_interval: 15s
-#  static_configs:
-#  - targets:
-#{% for server in groups[prometheus_node_exporter_group] %}
-#    - {{ server }}:9100
-#{% endfor %}
+- job_name: node_exporter
+  scrape_interval: 15s
+  static_configs:
+  - targets:
+{% for server in groups[prometheus_node_exporter_group] %}
+    - {{ server }}:9100
+{% endfor %}
 
 
   - job_name: 'hosts with priority high'
@@ -15,7 +15,13 @@
     static_configs:
       - targets: 
 {% for server in groups[prometheus_node_exporter_group] %}
-    - {{ server }}:9100
-    
+     - {{ server }}:9100
+    relabel_configs:
+     - source_labels: [__address__]
+       regex: (.+):(\d+)
+       replacement: ${1}
+       target_label: hostname
+     - target_label: productname
+       replacement: 'hosts with priority high'
 {% endfor %}
 {% endif %}
