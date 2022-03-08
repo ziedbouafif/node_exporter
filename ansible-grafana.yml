@@ -1,0 +1,6 @@
+- name: install monitoring stack
+  hosts: host
+  become: yes
+  roles:
+  - grafana
+
