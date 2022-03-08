@@ -9,13 +9,11 @@
     - {{ server }}:9100
 {% endfor %}
 
-
+{% for server in groups[prometheus_node_exporter_group] %}
   - job_name: 'hosts with priority high'
     scrape_interval: 60s
     static_configs:
-      - targets: 
-{% for server in groups[prometheus_node_exporter_group] %}
-     - {{ server }}:9100
+      - targets: [{% for node in  server  %} '{{ node }}:9100' {% if not loop.last %}, {% endif %}{% endfor %}]
     relabel_configs:
      - source_labels: [__address__]
        regex: (.+):(\d+)
