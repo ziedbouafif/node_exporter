@@ -9,3 +9,16 @@
     - {{ server }}:9100
 {% endfor %}
 {% endif %}
+{% if oprometheusTomcatNodesprio is defined and oprometheusTomcatNodesprio %}
+  - job_name: 'hosts with priority high'
+    scrape_interval: 60s
+    static_configs:
+      - targets: [{% for node in oprometheusTomcatNodesprio %} '{{ node }}:9100' {% if not loop.last %}, {% endif %}{% endfor %}]
+    relabel_configs:
+     - source_labels: [__address__]
+       regex: (.+):(\d+)
+       replacement: ${1}
+       target_label: hostname
+     - target_label: productname
+       replacement: 'hosts with priority high'
+{% endif %}
