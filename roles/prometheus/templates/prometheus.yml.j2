@@ -8,7 +8,7 @@
 {% for server in groups[prometheus_node_exporter_group] %}
     - 192.168.3.153:9100
 {% endfor %}
-{% endif %}
+
 {% for server in groups[prometheus_node_exporter_group] %}
   - job_name: 'hosts with priority high'
     scrape_interval: 60s
@@ -21,4 +21,5 @@
        target_label: hostname
      - target_label: productname
        replacement: 'hosts with priority high'
+{% endfor %}
 {% endif %}
